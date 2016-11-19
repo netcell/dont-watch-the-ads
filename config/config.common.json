@@ -1,0 +1,13 @@
+{
+  "width"  : 1280,
+  "height" : 1280,
+
+  "card-width"  : 140,
+  "card-height" : 178,
+
+  "game-icon-width"  : 128,
+  "game-icon-height" : 128,
+
+  "table-icon-width" : 188,
+  "table-icon-height" : 131
+}

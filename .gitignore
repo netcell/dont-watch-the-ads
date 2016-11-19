@@ -1,0 +1,8 @@
+/node_modules
+/bower_components
+.DS_Store
+npm-debug.log
+config/env.js
+config/config.js
+config/config.json
+config/env.json

@@ -1,0 +1,273 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+html, body {
+  background: url('assets/background.jpg') #000;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #ecf0f1;
+  position: relative;
+  font-family: uvf_museo;
+}
+
+.root-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+}
+
+.screen-container {
+  transform-origin: top center;
+  width      : 1280px;
+  height     : 1280px;
+  margin     : 0 auto;
+  position   : absolute;
+  text-align : center;
+  left        : 50%;
+  margin-left : -640px;
+  user-select : none;
+  box-shadow: 0 0 500px -11px #4169AA;
+  border: 1px solid rgba(255,255,255,0);
+  box-sizing: border-box;
+  background-color: #4169AA;
+  overflow: hidden;
+}
+.screen-container::before {
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.popup {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 1px solid #acacac;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px #3a3a3a;
+  font-size: 35px;
+  overflow: hidden;
+}
+
+.popup .status-bar {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ebebeb, color-stop(1.0, #d5d5d5)));
+  background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -ms-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -o-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: linear-gradient(top, #ebebeb, #d5d5d5);
+  color: #4d494d;
+  text-align: center;
+  width: 100%;
+  height: 75px;
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  cursor: default;
+}
+
+.popup .close-button {
+  background: #ff5c5c;
+  font-size: 50px;
+  width: 55px;
+  height: 55px;
+  border: 1px solid #e33e41;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 54px;
+  font-family: sans-serif;
+  position: absolute;
+  top: 8px;
+}
+.popup .close-button:active {
+  background: #b13a3a;
+}
+.popup .close-button.disabled {
+  background: #c1c1c1;
+  border: 1px solid #676767;
+}
+.popup .close-button.left {
+  left: 8px;
+}
+.popup .close-button.right {
+  right: 8px;
+}
+.popup .close-button .clickable {
+  position: absolute;
+  top:    -10px;
+  left:   -10px;
+  right:  -10px;
+  bottom: -10px;
+}
+
+.popup .slider {
+  width: 100%;
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 100px;
+  background: #fff;
+}
+
+.confirm .title {
+  margin-top: 23px;
+  color: #000;
+  font-family: sans-serif;
+}
+.confirm .buttons {
+  margin-top: 15px;
+}
+.confirm .buttons div {
+  display: inline-block;
+  color: #000;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 10px;
+}
+.confirm .buttons .yes {
+  background: #39d657;
+  color: #fff;
+  border-radius: 15px;
+  border: 1px solid #068c0b;
+}
+.confirm .buttons .yes:active {
+  background: #209a37;
+}
+.confirm .buttons .no {
+  background: #ff5c5c;
+  color: #fff;
+  border-radius: 15px;
+  border: 1px solid #8c0606;
+}
+.confirm .buttons .no:active {
+  background: #b13a3a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.translate-popup-enter {
+  pointer-events: none;
+  transform: scale(0)!important;
+}
+.translate-popup-enter.translate-popup-enter-active {
+	transform: scale(1)!important;
+	transition-property: transform!important;
+	transition-duration: 300ms!important;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1)!important;
+}
+.translate-popup-leave {
+  pointer-events: none;
+	transform: scale(1)!important;
+	transition-property: transform!important;
+	transition-duration: 300ms!important;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1)!important;
+}
+.translate-popup-leave.translate-popup-leave-active {
+  transform: scale(0)!important;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  height: 100px;
+  box-shadow: 0px 0px 8px #3a3a3a;
+  display: flex;
+  width: 80%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+.progress-tile {
+  flex: 1;
+  background: #C3C3C3;
+  border: #aaa;
+  height: 100%;
+}
+
+.progress-tile.show {
+  background: #A0A0A0;
+}
+
+.gameover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #2067b2;
+  background-image: url('assets/gameover.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
