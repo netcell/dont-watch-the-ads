@@ -103,6 +103,7 @@ export default class RootScreen extends Component {
           <div className="progress-bar">
             { _.range(10).map(i => {
               return <div className={`progress-tile ${i < props.popups.length ? 'show' : ''}`} key={i}>
+                <img src={`assets/icon.png`} />
               </div>
             }) }
           </div>

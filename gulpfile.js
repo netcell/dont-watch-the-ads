@@ -20,7 +20,6 @@ gulp.task('build:prod', function(callback){ runSequence(
   ['env:prod'],
   ['clean'],
   ['copy:build', 'html:build', 'browserify:build:prod'],
-  ['html:cacheBust'],
   callback
 ) });
 
