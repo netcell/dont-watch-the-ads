@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import {CLOSE_BUTTON_SIDE, closePopup} from '../../reducers/popups/actions.js'
 import Confirm from './Confirm';
 
+import _ from 'lodash';
+
 @connect(state => {
   return {};
 }, dispatch => {
@@ -69,7 +71,7 @@ export default class Popup extends Component {
           </a>
         }
       </div>
-      <img src={ `assets/${props.image}` } alt=""/>
+      <img src={ `assets/${props.image}` } width={props.width} alt=""/>
       {props.children}
     </div>
   }

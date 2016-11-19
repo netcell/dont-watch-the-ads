@@ -21,6 +21,7 @@
   "dependencies": {
     "jquery": "^2.2.4",
     "gsap": "^1.18.5",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "SoundJS": "~0.6.2"
   }
 }

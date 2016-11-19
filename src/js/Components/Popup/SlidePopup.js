@@ -45,10 +45,17 @@ export default class SimplePopup extends Component {
       close_button_disabled = {true}
     >        
       {props.children}
-      <ReactGesture
-        onSwipeRight={this.close}>
-        <div className="slider"></div>
-      </ReactGesture>
+      { props.close_button_side == CLOSE_BUTTON_SIDE.LEFT ? 
+        <ReactGesture
+          onSwipeLeft={this.close}>
+          <div className="slider">{`Slide to close <`}</div>
+        </ReactGesture>
+        :
+        <ReactGesture
+          onSwipeRight={this.close}>
+          <div className="slider">{`> Slide to close`}</div>
+        </ReactGesture>  
+      }
     </Popup>
   }
 }
