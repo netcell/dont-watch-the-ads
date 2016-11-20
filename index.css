@@ -58,6 +58,26 @@ html, body {
   font-family: uvf_museo;
 }
 
+#loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background: #151515;
+  padding-top: 60px;
+  font-family: sans-serif;
+}
+#loading span {
+  background: #F88900;
+  color: #000;
+  padding: 8px 6px;
+  display: inline-block;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
 .root-container {
   position: absolute;
   top: 0;
