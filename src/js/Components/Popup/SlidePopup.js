@@ -18,14 +18,15 @@ import Popup from '.'
 })
 export default class SimplePopup extends Component {
   state = {
-    
+    closed: false
   }
   constructor(){
     super();
   }
   @bind
   close() {
-    console.log('swipe');
+    if (this.state.closed) return;
+    this.setState({closed: true})
     var props = this.props;
     this.props.closePopup(this.props.id);
   }
@@ -48,12 +49,12 @@ export default class SimplePopup extends Component {
       { props.close_button_side == CLOSE_BUTTON_SIDE.LEFT ? 
         <ReactGesture
           onSwipeLeft={this.close}>
-          <div className="slider">{`Slide to close <`}</div>
+          <div className="slider left">Slide to close</div>
         </ReactGesture>
         :
         <ReactGesture
           onSwipeRight={this.close}>
-          <div className="slider">{`> Slide to close`}</div>
+          <div className="slider right">Slide to close</div>
         </ReactGesture>  
       }
     </Popup>

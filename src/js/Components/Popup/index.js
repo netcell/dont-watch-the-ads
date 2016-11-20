@@ -6,6 +6,9 @@ import {Provider} from 'react-redux';
 import classnames from 'classnames';
 import {CLOSE_BUTTON_SIDE, closePopup} from '../../reducers/popups/actions.js'
 import Confirm from './Confirm';
+import ReactGesture from 'react-gesture';
+
+import {generatePopup} from '../../reducers/popups/actions'
 
 import _ from 'lodash';
 
@@ -13,7 +16,8 @@ import _ from 'lodash';
   return {};
 }, dispatch => {
   return {
-    closePopup: closePopup(dispatch)
+    closePopup: closePopup(dispatch),
+    generatePopup: generatePopup(dispatch)
   };
 })
 export default class Popup extends Component {
@@ -39,6 +43,12 @@ export default class Popup extends Component {
   @bind
   toggleConfirm(){
     this.setState({ confirm: !this.state.confirm });
+  }
+  @bind
+  punish() {
+    var props = this.props;
+    props.generatePopup();
+    props.generatePopup();
   }
   render(){
     var props = this.props;
@@ -71,7 +81,14 @@ export default class Popup extends Component {
           </a>
         }
       </div>
-      <img src={ `assets/${props.image}` } width={props.width} alt=""/>
+      { !props.image ? null : 
+        <ReactGesture
+          onTouchStart={this.punish}
+          onMouseDown={this.punish}
+        >  
+          <img src={ `assets/${props.image}` } width={props.width} alt=""/>
+        </ReactGesture>  
+      }
       {props.children}
     </div>
   }

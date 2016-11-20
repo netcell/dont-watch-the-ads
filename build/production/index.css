@@ -47,7 +47,7 @@ table {
 	border-spacing: 0;
 }
 html, body {
-  background: url('assets/background.jpg') #000;
+  background: #000;
   background-size: cover;
   background-position: center center;
   width: 100%;
@@ -80,7 +80,7 @@ html, body {
   box-shadow: 0 0 500px -11px #4169AA;
   border: 1px solid rgba(255,255,255,0);
   box-sizing: border-box;
-  background-color: #4169AA;
+  background: url('assets/background.jpg') #4169AA;
   overflow: hidden;
 }
 .screen-container::before {
@@ -104,6 +104,7 @@ html, body {
 }
 
 .popup .status-bar {
+  position: relative;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ebebeb, color-stop(1.0, #d5d5d5)));
   background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
   background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
@@ -166,9 +167,15 @@ html, body {
   left: 0; bottom: 0;
   height: 75px;
   background: #e3e3e3;
-  color: #000;
+  color: #F88900;
   font-family: sans-serif;
   line-height: 75px;
+}
+.popup .slider.left {
+  background-image: url('assets/left_pattern.jpg');
+}
+.popup .slider.right {
+  background-image: url('assets/right_pattern.jpg');
 }
 
 .confirm .title {
@@ -220,9 +227,11 @@ html, body {
 
 .translate-popup-enter {
   pointer-events: none;
+  transform: translate3d(0, 0, 0)!important;
   transform: scale(0)!important;
 }
 .translate-popup-enter.translate-popup-enter-active {
+  transform: translate3d(0, 0, 0)!important;
 	transform: scale(1)!important;
 	transition-property: transform!important;
 	transition-duration: 300ms!important;
@@ -230,12 +239,14 @@ html, body {
 }
 .translate-popup-leave {
   pointer-events: none;
+  transform: translate3d(0, 0, 0)!important;
 	transform: scale(1)!important;
 	transition-property: transform!important;
 	transition-duration: 300ms!important;
 	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1)!important;
 }
 .translate-popup-leave.translate-popup-leave-active {
+  transform: translate3d(0, 0, 0)!important;
   transform: scale(0)!important;
 }
 
@@ -258,9 +269,25 @@ html, body {
   border: #aaa;
   height: 100%;
 }
+.progress-tile img{
+  opacity: 0;
+}
 
 .progress-tile.show {
   background: #A0A0A0;
+}
+
+.debug {
+  position: absolute;
+  bottom: 7px;
+  font-size: 35px;
+  font-family: sans-serif;
+  left: 0;
+  width: 339px;
+  text-align: center;
+}
+.debug div {
+  text-align: center;
 }
 
 .gameover {
@@ -269,8 +296,77 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #2067b2;
+  background-color: #0000aa;
   background-image: url('assets/gameover.png');
   background-position: center center;
   background-repeat: no-repeat;
+}
+.near-gameover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: darkred;
+  opacity: 0.5;
+}
+
+.popup.menu {
+  background: #151515;
+}
+.popup.menu .title {
+  margin-top: 60px;
+  font-family: sans-serif;
+}
+.popup.menu .address-bar {
+  font-size: 19px;
+  line-height: 35px;
+  text-align: center;
+  width: 50%;
+  height: 50%;
+  margin-top: 7px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #c1c0c1;
+  border-radius: 6px;
+  cursor: default;
+  outline: none;
+  background: #F4F4F4;
+  margin: 17px auto 0;
+  font-family: sans-serif;
+}
+.popup.menu .title span {
+  background: #F88900;
+  color: #000;
+  padding: 8px 6px;
+  display: inline-block;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.popup.menu .download {
+  background: #F88900;
+  color: #000;
+  padding: 8px 6px;
+  display: inline-block;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+.popup.menu .download:active {
+  background: #ffa31a;
+}
+.popup.menu .subtitle {
+  font-family: sans-serif;
+  font-size: 0.6em;
+  margin-top: 10px;
+  font-weight: lighter;
+  color: #F88900;
+}
+.popup.menu .images {
+  margin-top: 40px;
+}
+.popup.menu .images img{
+  margin: 0 5px;
 }

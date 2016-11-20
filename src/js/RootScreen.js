@@ -12,18 +12,23 @@ import _ from 'lodash';
 
 import SimplePopup from './Components/Popup/SimplePopup'
 import SlidePopup from './Components/Popup/SlidePopup'
+import Menu from './Components/Popup/Menu'
 import {CLOSE_BUTTON_SIDE, POPUP_TYPE, generatePopup} from './reducers/popups/actions'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import {startGame} from './reducers/game/actions';
+import {startGame, toMenu} from './reducers/game/actions';
 
 @connect(state => {
   return {
-    popups: state.popups
+    popups: state.popups,
+    closedPopup: state.common.closedPopup,
+    game_over: state.game.game_over,
+    menu: state.game.menu
   }
 }, dispatch => {
   return {
     generatePopup: generatePopup(dispatch),
-    startGame: startGame(dispatch)
+    startGame: startGame(dispatch),
+    toMenu: toMenu(dispatch)
   }
 })
 export default class RootScreen extends Component {
@@ -54,12 +59,9 @@ export default class RootScreen extends Component {
     }
     this.setState({ scale });
   }
-  render(){
+  popups() {
     var props = this.props;
-    var state = this.state;
-    let scale = state.scale;
-
-    let popups = props.popups.map(popup => {
+    return props.popups.slice(0, 10).map(popup => {
       switch(popup.type) {
         case POPUP_TYPE.SIMPLE: {
           return <SimplePopup
@@ -85,12 +87,41 @@ export default class RootScreen extends Component {
         }
       }
     })
+  }
+  progressBar() {
+    var props = this.props;
+    return _.range(10).map(i => {
+      let show = i < props.popups.length;
+      let opacity = i/10;
+      return <div 
+        className={`progress-tile ${ show ? 'show' : ''}`} 
+        key={i}
+      >
+        <ReactCSSTransitionGroup
+          transitionName="translate-popup"
+          transitionEnter={true}
+          transitionLeave={true}
+          transitionLeaveTimeout={300}
+          transitionEnterTimeout={300}
+        >
+        { i >= props.popups.length ? null :
+          [<img src={`assets/icon.png`} style={{ opacity: opacity }} key={i}/>]
+        }
+        </ReactCSSTransitionGroup>
+      </div>
+    })
+  }
+  render(){
+    var props = this.props;
+    var state = this.state;
+    let scale = state.scale;
 
     return <Provider store={ props.store }>
       <div className="root-container">
         <div className='screen-container' style={{
           transform: `matrix(${scale}, 0, 0, ${scale}, 0, 0)`
         }}>
+
           <ReactCSSTransitionGroup
             transitionName="translate-popup"
             transitionEnter={true}
@@ -98,18 +129,24 @@ export default class RootScreen extends Component {
             transitionLeaveTimeout={300}
             transitionEnterTimeout={300}
           >
-            {popups}
+            { props.menu ? <Menu/> : <Menu/> }
+            { this.popups() }
           </ReactCSSTransitionGroup>
+
           <div className="progress-bar">
-            { _.range(10).map(i => {
-              return <div className={`progress-tile ${i < props.popups.length ? 'show' : ''}`} key={i}>
-                <img src={`assets/icon.png`} />
-              </div>
-            }) }
+            { this.progressBar() }
           </div>
+
           {props.popups.length < 10 ? null :
-            <div className="gameover" onClick={props.startGame}></div>
+            <div className="near-gameover"></div>
           }
+
+          {!props.game_over? null :
+            <div className="gameover" onClick={props.toMenu}></div>
+          }
+          <div className="debug">
+            <div>Ads closed: {props.closedPopup}</div>
+          </div>
         </div>
       </div>
     </Provider>
